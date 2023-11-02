@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinjemBuku</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div id="book-list"></div>
+
+  <script>
+      // Mendapatkan referensi ke elemen div dengan id "book-list"
+      const bookList = document.getElementById("book-list");
+
+      // Mengirim permintaan GET ke API buku
+      fetch("https://openlibrary.org/search.json?q=the+lord+of+the+rings")
+          .then(response => response.json()) // Mengubah respons ke JSON
+          .then(data => {
+              // Mengolah data buku dan menampilkannya di halaman
+              data.forEach(book => {
+                  const bookItem = document.createElement("div");
+                  bookItem.innerHTML = `
+                      <h2>${book.title}</h2>
+                      <p>${book.author}</p>
+                      <p>${book.description}</p>
+                      <hr>
+                  `;
+                  bookList.appendChild(bookItem);
+              });
+          })
+          .catch(error => {
+              // Menangani kesalahan jika terjadi
+              console.error("Error:", error);
+          });
+  </script>
+    <header>
+      <div class="container">
+        <div class="logo">MinjemBuku.</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Review</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="home-bar">
+          <div class="content">
+              <h1>Selamat Datang di MinjemBuku.</h1>
+              <p>Website ini menyediakan berbagai macam buku yang bisa kamu pinjam.</p>
+          </div>
+        </div>
+  
+        <div class="content">
+          <!-- Konten website lainnya akan ditampilkan di sini -->
+        </div>
+    </header>
+    
+    <main>
+      <div class="about-container">
+        <div class="about-image">
+            <img src="assets/AboutUs.jfif" height="300" width="550" alt="About Us">
+        </div>
+        <div class="about-text">
+            <h2>About Us</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non libero et libero pharetra maximus a nec arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+        </div>
+    </div>
+
+    <div class="flex-container">
+      <div class="box">
+          <img src="assets/discount.png" alt="Icon 1">
+          <p>Member Discount</p>
+      </div>
+      <div class="box">
+          <img src="assets/book.png" alt="Icon 2">
+          <p>Updated Books</p>
+      </div>
+      <div class="box">
+          <img src="assets/good.png" alt="Icon 3">
+          <p>Good Product</p>
+      </div>
+      <div class="box">
+          <img src="assets/card.png" alt="Icon 4">
+          <p>Secured Payment</p>
+      </div>
+    </div>
+
+    <div class="OurBook">
+        <p>Our Book</p>
+    </div>
+    <div class="product">
+      <div class="product-item">
+          <img src="assets/waves.jfif" alt="Item 1">
+          <h3>Waves</h3>
+          <p>Rp 10.000</p>
+      </div>
+      <div class="product-item">
+          <img src="assets/friendzone.jfif" alt="Item 2">
+          <h3>Friendzone</h3>
+          <p>Rp 15.000</p>
+      </div>
+      <div class="product-item">
+          <img src="assets/thefall.jfif" alt="Item 3">
+          <h3>The Fall</h3>
+          <p>Rp 12.000</p>
+      </div>
+    </div>
+
+    <div class="review">
+      <div class="review-item">
+          <div class="rating">
+              ★★★★☆ <!-- Rating dalam bentuk bintang -->
+          </div>
+          <img src="customer1.jpg" alt="Customer 1">
+          <p>"Pelayanan sangat memuaskan, saya senang berbelanja di sini!"</p>
+      </div>
+      <div class="review-item">
+          <div class="rating">
+              ★★★★★ <!-- Rating dalam bentuk bintang -->
+          </div>
+          <img src="customer2.jpg" alt="Customer 2">
+          <p>"Produk berkualitas, harga terjangkau, sangat puas dengan pembelian saya."</p>
+      </div>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-form">
+          <h2>Contact Us</h2>
+          <form>
+              <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="phone">Phone Number:</label>
+                  <input type="tel" id="phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                  <label for="message">Message:</label>
+                  <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit">Send Message</button>
+          </form>
+      </div>
+      <div class="contact-image">
+          <img src="contact-image.jpg" alt="Contact Us">
+      </div>
+    </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+          <div class="footer-section">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Services</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>Extra Links</h3>
+              <ul>
+                  <li><a href="#">Portfolio</a></li>
+                  <li><a href="#">Contact</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>Location</h3>
+              <p>123 Street Name, City, Country</p>
+          </div>
+          <div class="footer-section">
+              <h3>Contact Info</h3>
+              <p>Email: example@example.com</p>
+              <p>Phone: +123 456 789</p>
+          </div>
+      </div>
+
+      <div class="credit">
+      <p>Belajar Dasar Pemrograman Web &#169; 2019, Dicoding Academy</p>
+      </div>
+    </footer>
+</body>
+</html>
